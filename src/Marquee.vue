@@ -33,7 +33,7 @@ export default {
       paused: true,
       locked: false,
       repeat: 1,
-      initialized: true
+      initialized: false
     }
   },
   methods: {
@@ -51,18 +51,13 @@ export default {
       }
     }
   },
-  created () {
-    this.initialized = false
-  },
   updated () {
     if (!this.initialized) {
       this.isOverflown()
     }
-
     this.initialized = true
   }
 }
-
 </script>
 
 <style scoped>
@@ -86,7 +81,7 @@ export default {
     animation-play-state: paused
   }
 
-@keyframes animation {
+  @keyframes animation {
         0% { transform:translateX(0); }
         100% { transform:translateX(-100%); }
     }
