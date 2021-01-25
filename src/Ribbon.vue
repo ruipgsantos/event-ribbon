@@ -28,7 +28,8 @@
                   <div cols="12" class="popover-text popover-sub-text">{{myEvent.subtext}}</div>
                 </div>
                   <div align-v="center">
-                  <div cols="12"><MarqueeText @mouseenter="marqueePaused=true" @mouseleave="marqueePaused=false" :paused=marqueePaused class="popover-text popover-description-text">{{myEvent.description}}</MarqueeText></div>
+                  <!--div cols="12"><MarqueeText @mouseenter="marqueePaused=true" @mouseleave="marqueePaused=false" :paused=marqueePaused class="popover-text popover-description-text">{{myEvent.description}}</MarqueeText></div-->
+                  <marquee>{{myEvent.description}}</marquee>
                 </div>
               </router-link>
             </div>
@@ -40,16 +41,15 @@
 
 <script>
 import ribbonstore from './ribbonstore.js'
-import MarqueeText from 'vue-marquee-text-component'
+import marquee from './Marquee'
 
 // TODO:
 // -change order of ribbon if the event has already been displayed (may be tricky, as events exist in the store througout the whole application in memory)
 // maybe save a state of exposure?
-// -make marquee description when it's too big: probably has to be solved with javascript
 // -make everything responsive!! (size of containers may change a lot)
 export default {
   components: {
-    MarqueeText
+    marquee
   },
   props: {
     // array should contain objects with:
@@ -129,23 +129,20 @@ export default {
     // if events in event array have no id,
     // provide a new generated id for each one to manage the colors correctly
     if (this.events && Array.isArray(this.events)) {
-
-      let existingEvents = []
+      const existingEvents = []
 
       this.events.forEach((event, index, object) => {
-
         // do not allow repeating events
-        if(existingEvents.indexOf(event.id) !== -1){
-          object.splice(index, 1);
+        if (existingEvents.indexOf(event.id) !== -1) {
+          object.splice(index, 1)
         }
 
         // set a generated id if there is none
-        if(!event.id){
+        if (!event.id) {
           event.id = ribbonstore.getNewEventId()
-        }else{
+        } else {
           existingEvents.push(event.id)
         }
-
       })
     }
   }

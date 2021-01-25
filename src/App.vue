@@ -50,14 +50,12 @@
       </div>
     </div>
 
-
   </div>
 </template>
 
 <script>
-import Ribbon from "./Ribbon"
-import {events} from "./mockdata"
-
+import Ribbon from './Ribbon'
+import { events } from './mockdata'
 
 export default {
   name: 'App',
@@ -65,16 +63,16 @@ export default {
     Ribbon
   },
 
-  //TODO
+  // TODO
   // change size of containers
   methods: {
-    getRandomEvents(){
-      let resultArray = []
-      let length = events.length
-      let numberOfEvents = Math.floor(((Math.random() + 1) * 2) -1)
+    getRandomEvents () {
+      const resultArray = []
+      const length = events.length
+      const numberOfEvents = Math.floor(((Math.random() + 1) * 2) - 1)
 
-      for(let i = 0; i<=numberOfEvents; i++){
-        let randomEvent = Math.floor((Math.random() * length-1) + 1)
+      for (let i = 0; i <= numberOfEvents; i++) {
+        const randomEvent = Math.floor((Math.random() * length - 1) + 1)
         resultArray.push(events[randomEvent])
       }
 
