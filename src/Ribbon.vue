@@ -225,7 +225,6 @@ div{
 }
 
 .popover-inner-container{
-  /*box-shadow: 2px 2px 1px lightgray;*/
   border: 1px solid lightgray
 }
 
