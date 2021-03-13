@@ -4,7 +4,7 @@ function install(Vue, options) {
   if (install.installed) return;
   install.installed = true;
   Vue.component("v-ribbon", ribbon);
-  Vue.use(options.Router)
+  Vue.use(options.router)
 }
 
 const plugin = {
