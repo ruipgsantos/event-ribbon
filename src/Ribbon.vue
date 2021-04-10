@@ -48,6 +48,7 @@ import marquee from './Marquee'
 // maybe save a state of exposure?
 // -make everything responsive!! (size of containers may change a lot)
 export default {
+  name: 'v-ribbon',
   components: {
     marquee
   },

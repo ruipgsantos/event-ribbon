@@ -1,17 +1,6 @@
 import ribbon from "./Ribbon.vue"
 
-function install(Vue, options) {
-  if (install.installed) return;
-  install.installed = true;
-  Vue.component("v-ribbon", ribbon);
-  Vue.use(options.router)
-}
-
-const plugin = {
-  install
-};
-
-let GlobalVue = null;
+/*let GlobalVue = null;
 if (typeof window !== "undefined") {
   GlobalVue = window.Vue;
 } else if (typeof global !== "undefined") {
@@ -19,8 +8,22 @@ if (typeof window !== "undefined") {
 }
 if (GlobalVue) {
   GlobalVue.use(plugin);
+}*/
+
+//ribbon.install = install;
+
+const eventribbon = {
+  install(Vue, options) {
+    if (install.installed) return;
+    install.installed = true;
+    Vue.component("v-ribbon", ribbon);
+    Vue.use(options.router)
+  }
 }
 
-ribbon.install = install;
+// Automatic installation if Vue has been added to the global scope.
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(eventribbon);
+}
 
-export default ribbon;
+export default eventribbon
